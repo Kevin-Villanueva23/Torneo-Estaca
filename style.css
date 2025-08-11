@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #1e3a8a;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+h2 {
+    color: #1e3a8a;
+}
+
+section {
+    background: white;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 0.5rem;
+    text-align: center;
+}
+
+footer {
+    background: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 0.5rem;
+    margin-top: 2rem;
+}
+
+/* Bracket estilo llaves */
+.bracket {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.round {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.match {
+    background: #e0f2fe;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+    min-width: 150px;
+    position: relative;
+}
+
+/* Líneas de conexión */
+.round:nth-child(1) .match::after {
+    content: "";
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    width: 25px;
+    height: 2px;
+    background: black;
+}
+
+.round:nth-child(3) .match::after {
+    content: "";
+    position: absolute;
+    left: -25px;
+    top: 50%;
+    width: 25px;
+    height: 2px;
+    background: black;
+}
