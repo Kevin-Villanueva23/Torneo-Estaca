@@ -26,6 +26,50 @@
     { nombre: "David", equipo: "La Victoria", goles: 3 }
   ];
 
+
+// Calcular goles recibidos por equipo (sumando ida y vuelta, respetando vueltaNoCuenta)
+function calcularGolesRecibidos() {
+  const recibidos = {};
+
+  partidos.forEach(p => {
+    // Inicializar equipos en objeto
+    if (!(p.equipo1 in recibidos)) recibidos[p.equipo1] = 0;
+    if (!(p.equipo2 in recibidos)) recibidos[p.equipo2] = 0;
+
+    // Sumar goles recibidos en ida
+    recibidos[p.equipo1] += p.ida2 ?? 0;
+    recibidos[p.equipo2] += p.ida1 ?? 0;
+
+    // Sumar goles recibidos en vuelta solo si cuenta
+    if (!p.vueltaNoCuenta) {
+      recibidos[p.equipo1] += p.vuelta2 ?? 0;
+      recibidos[p.equipo2] += p.vuelta1 ?? 0;
+    }
+  });
+
+  return recibidos;
+}
+
+// Mostrar top 3 porteros menos batidos
+function mostrarPorterosMenosBatidos() {
+  const recibidos = calcularGolesRecibidos();
+  const tabla = document.querySelector("#tabla-porteros tbody");
+  tabla.innerHTML = "";
+
+  // Convertir a array y ordenar ascendente por goles recibidos
+  const ordenados = Object.entries(recibidos)
+    .map(([equipo, goles]) => ({ equipo, goles }))
+    .sort((a,b) => a.goles - b.goles)
+    .slice(0,3); // Top 3
+
+  ordenados.forEach(({equipo, goles}) => {
+    tabla.innerHTML += `<tr><td>${equipo}</td><td>${goles}</td></tr>`;
+  });
+}
+
+// Ejecutar la función luego de mostrar todo lo demás
+mostrarPorterosMenosBatidos();
+
   // Función para mostrar la tabla de resultados
   function mostrarResultados() {
     const tbody = document.querySelector("#tabla-resultados tbody");
@@ -163,5 +207,6 @@
   mostrarResultados();
   mostrarGoleadores();
   mostrarBracket();
+
 
 
