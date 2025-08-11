@@ -8,63 +8,46 @@
 </head>
 <body>
 
-    <header>
-        <h1>⚽ Torneo de Fútbol</h1>
-    </header>
+  <header>⚽ Torneo Seminaristas Estaca Villanueva 2025</header>
 
-    <main>
-        <!-- Tabla de Resultados -->
-        <section class="tabla-container">
-            <h2>Resultados</h2>
-            <table id="tablaResultados">
-                <thead>
-                    <tr>
-                        <th>Equipo Local</th>
-                        <th>Goles</th>
-                        <th>Equipo Visitante</th>
-                        <th>Goles</th>
-                        <th>Ganador</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </section>
+<main>
 
-        <!-- Tabla de Goleadores -->
-        <section class="tabla-container">
-            <h2>Tabla de Goleadores</h2>
-            <table id="tablaGoleadores">
-                <thead>
-                    <tr>
-                        <th>Jugador</th>
-                        <th>Equipo/Barrio</th>
-                        <th>Goles</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </section>
+  <!-- Resultados Ida y Vuelta -->
+  <section>
+    <h2>Resultados de Ida y Vuelta</h2>
+    <table id="tabla-resultados">
+      <thead>
+        <tr>
+          <th>Grupo</th><th>Equipo 1</th><th>Ida</th><th>Vuelta</th><th>Equipo 2</th><th>Ida</th><th>Vuelta</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p class="note"><b>Nota:</b> Los goles de vuelta no cuentan cuando el equipo no se presentó.</p>
+  </section>
 
-        <!-- Portero Menos Batido -->
-        <section class="tabla-container">
-            <h2>Portero Menos Batido</h2>
-            <table id="tablaPortero">
-                <thead>
-                    <tr>
-                        <th>Portero</th>
-                        <th>Equipo/Barrio</th>
-                        <th>Goles Recibidos</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </section>
-    </main>
+  <!-- Goleadores -->
+  <section>
+    <h2>Goleadores Totales</h2>
+    <table id="tabla-goleadores">
+      <thead>
+        <tr><th>Jugador</th><th>Equipo/Barrio</th><th>Goles</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
 
-    <footer>
-        <p>🏆 Sistema de Torneo - Ejemplo</p>
-    </footer>
+  <!-- Bracket -->
+  <section>
+    <h2>Cuadro de Eliminación</h2>
+    <div class="bracket" id="bracket">
+      <!-- Aquí se inyecta el bracket con JS -->
+    </div>
+  </section>
+
+</main>
 
     <script src="script.js"></script>
 </body>
 </html>
+
