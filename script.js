@@ -47,7 +47,7 @@ goleadores.sort((a, b) => b.goles - a.goles).forEach(g => {
 });
 
 // ==========================
-// CALCULAR GOLES RECIBIDOS
+// PORTERO MENOS BATIDO
 // ==========================
 function calcularGolesRecibidos(partidos) {
     const recibidos = {};
@@ -76,36 +76,31 @@ function calcularGolesRecibidos(partidos) {
 
 function mostrarPorteroMenosBatido(partidos) {
     const recibidos = calcularGolesRecibidos(partidos);
-    const lista = Object.entries(recibidos).map(([equipo, goles]) => ({equipo, goles}));
+    const lista = Object.entries(recibidos).map(([equipo, goles]) => ({ equipo, goles }));
     lista.sort((a, b) => a.goles - b.goles);
 
-    let cont = document.getElementById("mejor-portero");
-    if (!cont) {
-        cont = document.createElement("div");
-        cont.id = "mejor-portero";
-        cont.style.padding = "1rem";
-        cont.style.margin = "1rem";
-        cont.style.borderRadius = "8px";
-        cont.style.background = "#e6fffa";
-        document.querySelector("main").prepend(cont);
-    }
-
-    cont.innerHTML = `<h3>🏆 Portero menos batido</h3>
-        <p style="font-weight:bold">${lista[0].equipo} — ${lista[0].goles} goles recibidos</p>`;
-
-    let tab = "<table style='width:100%;border-collapse:collapse'><tr><th>Equipo</th><th>Goles recibidos</th></tr>";
-    lista.forEach(row => {
-        const highlight = row.equipo === lista[0].equipo ? "background:#d1fae5;font-weight:700" : "";
-        tab += `<tr style="${highlight}"><td style="padding:6px;border:1px solid #ddd">${row.equipo}</td><td style="padding:6px;border:1px solid #ddd;text-align:center">${row.goles}</td></tr>`;
-    });
-    tab += "</table>";
-    cont.innerHTML += tab;
+    const cont = document.createElement("section");
+    cont.id = "mejor-portero";
+    cont.innerHTML = `
+        <h2>🏆 Portero menos batido</h2>
+        <p style="font-weight:bold">${lista[0].equipo} — ${lista[0].goles} goles recibidos</p>
+        <table>
+            <tr><th>Equipo</th><th>Goles recibidos</th></tr>
+            ${lista.map(row => `
+                <tr style="${row.equipo === lista[0].equipo ? 'background:#d1fae5;font-weight:700' : ''}">
+                    <td>${row.equipo}</td>
+                    <td>${row.goles}</td>
+                </tr>
+            `).join("")}
+        </table>
+    `;
+    document.querySelector("main").prepend(cont);
 }
 
 mostrarPorteroMenosBatido(partidos);
 
 // ==========================
-// BRACKET CON LLAVES
+// BRACKET
 // ==========================
 const bracket = [
     { ronda: "Semifinal 1", equipo1: "Ganador Grupo A", equipo2: "Ganador Grupo C" },
