@@ -3,51 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Torneo Seminaristas Estaca Villanueva 2025</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Torneo de Fútbol</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>Torneo de Fútbol</h1>
+    </header>
 
-<header>
-    <h1>⚽ Torneo Seminaristas - Estaca Villanueva 2025</h1>
-</header>
-
-<main>
-    <section id="resultados">
-        <h2>Resultados de Ida y Vuelta</h2>
-        <div id="tabla-resultados"></div>
-    </section>
-
-    <section id="goleadores">
-        <h2>Goleadores</h2>
-        <ul id="lista-goleadores"></ul>
-    </section>
-
-    <section id="bracket">
-        <h2>Cuadro de Eliminación</h2>
-        <div class="bracket">
-            <div class="round">
-                <div class="match">Ganador Grupo A</div>
-                <div class="match">Ganador Grupo C</div>
+    <main>
+        <section class="bracket">
+            <h2>Cuartos de Final</h2>
+            <div class="match">
+                <input type="text" placeholder="Equipo 1">
+                <input type="number" placeholder="Goles">
+                <span>vs</span>
+                <input type="number" placeholder="Goles">
+                <input type="text" placeholder="Equipo 2">
             </div>
-            <div class="round">
-                <div class="match">Ganador SF1</div>
-            </div>
-            <div class="round">
-                <div class="match">Ganador Grupo B</div>
-                <div class="match">Mejor Perdedor</div>
-            </div>
-            <div class="round">
-                <div class="match">Ganador SF2</div>
-            </div>
-        </div>
-    </section>
-</main>
 
-<footer>
-    <p>Estaca Villanueva 2025 - Torneo de Seminaristas</p>
-</footer>
+            <div class="match">
+                <input type="text" placeholder="Equipo 3">
+                <input type="number" placeholder="Goles">
+                <span>vs</span>
+                <input type="number" placeholder="Goles">
+                <input type="text" placeholder="Equipo 4">
+            </div>
 
-<script src="script.js"></script>
+            <div class="match">
+                <input type="text" placeholder="Equipo 5">
+                <input type="number" placeholder="Goles">
+                <span>vs</span>
+                <input type="number" placeholder="Goles">
+                <input type="text" placeholder="Equipo 6">
+            </div>
+        </section>
+
+        <section class="goalkeeper">
+            <h2>Portero Menos Batido</h2>
+            <input type="text" id="goalkeeperName" placeholder="Nombre del portero">
+            <input type="number" id="goalsAgainst" placeholder="Goles recibidos">
+            <button onclick="addGoalkeeper()">Agregar</button>
+            <ul id="goalkeeperList"></ul>
+            <p id="bestGoalkeeper"></p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
