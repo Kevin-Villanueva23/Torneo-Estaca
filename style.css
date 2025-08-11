@@ -1,108 +1,93 @@
-* {
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background: #f4f4f9;
-    color: #333;
 }
 
 header {
-    background: #2563eb;
+    background: #1e3a8a;
     color: white;
-    padding: 15px;
+    padding: 1rem;
     text-align: center;
 }
 
-main {
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+h2 {
+    color: #1e3a8a;
 }
 
 section {
     background: white;
-    padding: 15px;
+    margin: 1rem;
+    padding: 1rem;
     border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 450px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
-h2 {
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 0.5rem;
     text-align: center;
-    margin-bottom: 15px;
-    color: #2563eb;
+}
+
+footer {
+    background: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 0.5rem;
+    margin-top: 2rem;
+}
+
+/* Bracket estilo llaves */
+.bracket {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.round {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .match {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 10px;
-}
-
-.match input[type="text"],
-.match input[type="number"] {
-    padding: 8px;
-    border: 1px solid #ccc;
+    background: #e0f2fe;
+    padding: 0.5rem;
+    margin: 1rem 0;
     border-radius: 6px;
-    width: 100px;
     text-align: center;
-}
-
-.match span {
     font-weight: bold;
+    min-width: 150px;
+    position: relative;
 }
 
-button {
-    background: #2563eb;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 8px;
+/* Líneas de conexión */
+.round:nth-child(1) .match::after {
+    content: "";
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    width: 25px;
+    height: 2px;
+    background: black;
 }
 
-button:hover {
-    background: #1e40af;
-}
-
-ul {
-    list-style: none;
-    margin-top: 10px;
-}
-
-li {
-    background: #f0f0f0;
-    padding: 6px;
-    border-radius: 6px;
-    margin-bottom: 5px;
-}
-
-#bestGoalkeeper {
-    margin-top: 10px;
-    font-weight: bold;
-    color: green;
-}
-
-/* 📱 Adaptación para móvil */
-@media (max-width: 600px) {
-    .match input[type="text"],
-    .match input[type="number"] {
-        width: 80px;
-        font-size: 14px;
-    }
-
-    button {
-        width: 100%;
-    }
+.round:nth-child(3) .match::after {
+    content: "";
+    position: absolute;
+    left: -25px;
+    top: 50%;
+    width: 25px;
+    height: 2px;
+    background: black;
 }
