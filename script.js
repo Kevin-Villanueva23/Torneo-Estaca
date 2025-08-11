@@ -1,6 +1,6 @@
  // Datos de los partidos ida y vuelta
   const partidos = [
-    { grupo: "A", equipo1: "Las Flores", ida1: 0, vuelta1: null, equipo2: "Villanueva", ida2: 7, vuelta2: 3, vueltaNoCuenta: true },
+    { grupo: "A", equipo1: "Las Flores", ida1: 0, vuelta1: 0, equipo2: "Villanueva", ida2: 7, vuelta2: 3, vueltaNoCuenta: true },
     { grupo: "B", equipo1: "Dos Caminos", ida1: 6, vuelta1: null, equipo2: "El Plan", ida2: 13, vuelta2: null },
     { grupo: "C", equipo1: "La Victoria", ida1: 3, vuelta1: 5, equipo2: "Santiago", ida2: 9, vuelta2: 3 }
   ];
@@ -163,3 +163,4 @@
   mostrarResultados();
   mostrarGoleadores();
   mostrarBracket();
+
