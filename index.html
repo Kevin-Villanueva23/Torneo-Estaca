@@ -8,21 +8,25 @@
 </head>
 <body>
 
-  <header>⚽ Torneo Seminaristas Estaca Villanueva 2025</header>
+<header>⚽ Torneo Seminaristas Estaca Villanueva 2025</header>
 
 <main>
 
   <!-- Resultados Ida y Vuelta -->
-  <section>
+  <section id="resultados">
     <h2>Resultados de Ida y Vuelta</h2>
-    <table id="tabla-resultados">
-      <thead>
-        <tr>
-          <th>Grupo</th><th>Equipo 1</th><th>Ida</th><th>Vuelta</th><th>Equipo 2</th><th>Ida</th><th>Vuelta</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <div id="tabla-resultados-container">
+      <table id="tabla-resultados">
+        <thead>
+          <tr>
+            <th>Grupo</th><th>Equipo 1</th><th>Ida</th><th>Vuelta</th><th>Equipo 2</th><th>Ida</th><th>Vuelta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Se llenará con JS -->
+        </tbody>
+      </table>
+    </div>
     <p class="note"><b>Nota:</b> Los goles de vuelta no cuentan cuando el equipo no se presentó.</p>
   </section>
 
@@ -33,22 +37,24 @@
       <thead>
         <tr><th>Jugador</th><th>Equipo/Barrio</th><th>Goles</th></tr>
       </thead>
-      <tbody></tbody>
+      <tbody>
+        <!-- Se llenará con JS -->
+      </tbody>
     </table>
   </section>
 
-    <!-- Agrega esto justo después de la sección de Goleadores -->
-
-<section>
-  <h2>🏆 Porteros Menos Batidos (Top 3)</h2>
-  <table id="tabla-porteros">
-    <thead>
-      <tr><th>Equipo/Barrio</th><th>Goles Recibidos</th></tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-</section>
-
+  <!-- Porteros menos batidos -->
+  <section>
+    <h2>🏆 Porteros Menos Batidos (Top 3)</h2>
+    <table id="tabla-porteros">
+      <thead>
+        <tr><th>Equipo/Barrio</th><th>Goles Recibidos</th></tr>
+      </thead>
+      <tbody>
+        <!-- Se llenará con JS -->
+      </tbody>
+    </table>
+  </section>
 
   <!-- Bracket -->
   <section>
@@ -63,5 +69,6 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
