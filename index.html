@@ -3,38 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Torneo Seminaristas Estaca Villanueva 2025</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Torneo de Fútbol</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header>
-    <h1>⚽ Torneo Seminaristas - Estaca Villanueva 2025</h1>
-</header>
+    <header>
+        <h1>⚽ Torneo de Fútbol</h1>
+    </header>
 
-<main>
-    <!-- Portero menos batido se inyecta aquí desde JS -->
+    <main>
+        <!-- Tabla de Resultados -->
+        <section class="tabla-container">
+            <h2>Resultados</h2>
+            <table id="tablaResultados">
+                <thead>
+                    <tr>
+                        <th>Equipo Local</th>
+                        <th>Goles</th>
+                        <th>Equipo Visitante</th>
+                        <th>Goles</th>
+                        <th>Ganador</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
 
-    <section id="resultados">
-        <h2>Resultados de Ida y Vuelta</h2>
-        <div id="tabla-resultados"></div>
-    </section>
+        <!-- Tabla de Goleadores -->
+        <section class="tabla-container">
+            <h2>Tabla de Goleadores</h2>
+            <table id="tablaGoleadores">
+                <thead>
+                    <tr>
+                        <th>Jugador</th>
+                        <th>Equipo/Barrio</th>
+                        <th>Goles</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
 
-    <section id="goleadores">
-        <h2>Goleadores</h2>
-        <ul id="lista-goleadores"></ul>
-    </section>
+        <!-- Portero Menos Batido -->
+        <section class="tabla-container">
+            <h2>Portero Menos Batido</h2>
+            <table id="tablaPortero">
+                <thead>
+                    <tr>
+                        <th>Portero</th>
+                        <th>Equipo/Barrio</th>
+                        <th>Goles Recibidos</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
 
-    <section id="bracket">
-        <h2>Cuadro de Eliminación</h2>
-        <div id="bracket-container" class="bracket"></div>
-    </section>
-</main>
+    <footer>
+        <p>🏆 Sistema de Torneo - Ejemplo</p>
+    </footer>
 
-<footer>
-    <p>Estaca Villanueva 2025 - Torneo de Seminaristas</p>
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
