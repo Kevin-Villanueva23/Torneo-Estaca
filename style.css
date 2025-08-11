@@ -1,87 +1,108 @@
- * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-    body {
-        font-family: Arial, sans-serif;
-        background: #f4f4f4;
-        color: #333;
-        padding: 10px;
-    }
+body {
+    background: #f4f4f9;
+    color: #333;
+}
 
-    h1, h2 {
-        text-align: center;
-        margin-bottom: 10px;
-    }
+header {
+    background: #2563eb;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
 
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-        justify-content: center;
-    }
+main {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
 
-    .card {
-        background: #fff;
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
-        flex: 1 1 300px;
-        max-width: 400px;
-    }
+section {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 450px;
+}
 
-    .card h3 {
-        margin-bottom: 10px;
-        text-align: center;
-        color: #2563eb;
-    }
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #2563eb;
+}
 
-    label {
+.match {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.match input[type="text"],
+.match input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100px;
+    text-align: center;
+}
+
+.match span {
+    font-weight: bold;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+button:hover {
+    background: #1e40af;
+}
+
+ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+li {
+    background: #f0f0f0;
+    padding: 6px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+#bestGoalkeeper {
+    margin-top: 10px;
+    font-weight: bold;
+    color: green;
+}
+
+/* 📱 Adaptación para móvil */
+@media (max-width: 600px) {
+    .match input[type="text"],
+    .match input[type="number"] {
+        width: 80px;
         font-size: 14px;
-        display: block;
-        margin-top: 5px;
-    }
-
-    input {
-        width: 100%;
-        padding: 8px;
-        margin-top: 3px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
     }
 
     button {
         width: 100%;
-        background: #2563eb;
-        color: white;
-        border: none;
-        padding: 10px;
-        margin-top: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
     }
-
-    button:hover {
-        background: #1e40af;
-    }
-
-    .result {
-        margin-top: 15px;
-        padding: 10px;
-        background: #e5f6ff;
-        border-radius: 5px;
-        text-align: center;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-        h1 {
-            font-size: 22px;
-        }
-        .card {
-            max-width: 100%;
-        }
-    }
+}
