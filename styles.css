@@ -1,75 +1,93 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-header {
+    background: #f0f4f8;
+    margin: 0; padding: 0 10px 40px;
+    color: #222;
+  }
+  header {
     background: #1e3a8a;
     color: white;
-    padding: 1rem;
+    padding: 15px 0;
     text-align: center;
-}
-
-h2 {
+    font-size: 1.5rem;
+  }
+  h2 {
     color: #1e3a8a;
-}
-
-section {
+    margin-top: 30px;
+  }
+  section {
     background: white;
-    margin: 1rem;
-    padding: 1rem;
+    padding: 15px 20px;
+    margin-top: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-
-table {
+    box-shadow: 0 0 8px rgb(0 0 0 / 0.1);
+  }
+  table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 0.5rem;
-}
-
-table, th, td {
+    margin-top: 10px;
+  }
+  th, td {
     border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 0.5rem;
+    padding: 7px 10px;
     text-align: center;
-}
-
-footer {
-    background: #1e3a8a;
+    font-size: 0.95rem;
+  }
+  th {
+    background: #2563eb;
     color: white;
-    text-align: center;
-    padding: 0.5rem;
-    margin-top: 2rem;
-}
+  }
+  .note {
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
+    margin-top: 6px;
+  }
 
-/* Bracket */
-.bracket {
+  /* Bracket */
+  .bracket {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
     justify-content: center;
-    margin-top: 1rem;
-}
-
-.bracket-box {
+    flex-wrap: wrap;
+    margin-top: 25px;
+    gap: 20px;
+  }
+  .round {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 160px;
+  }
+  .match {
     background: #e0f2fe;
-    padding: 0.8rem;
-    border-radius: 6px;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
     text-align: center;
-    font-weight: bold;
-    min-width: 150px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
+    position: relative;
+  }
+  /* Lines connecting bracket */
+  .round:not(:last-child) .match {
+    border-right: 3px solid #2563eb;
+    padding-right: 18px;
+  }
+  .round:nth-child(odd) .match {
+    margin-bottom: 15px;
+  }
 
-/* Responsive */
-@media (max-width: 600px) {
+  /* Responsive */
+  @media (max-width: 640px) {
     .bracket {
-        flex-direction: column;
-        align-items: center;
+      flex-direction: column;
+      align-items: center;
     }
-}
+    .round {
+      min-width: auto;
+      width: 100%;
+      max-width: 320px;
+    }
+    .round:not(:last-child) .match {
+      border-right: none;
+      padding-right: 10px;
+    }
+  }
