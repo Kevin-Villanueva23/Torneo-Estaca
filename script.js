@@ -1,118 +1,83 @@
-// ==========================
-// DATOS DEL TORNEO
-// ==========================
-const partidos = [
-    { grupo: "A", equipo1: "Las Flores", ida1: 0, vuelta1: null, equipo2: "Villanueva", ida2: 7, vuelta2: null, vueltaNoCuenta: true },
-    { grupo: "B", equipo1: "El Plan", ida1: 13, vuelta1: null, equipo2: "Dos Caminos", ida2: 6, vuelta2: null },
-    { grupo: "C", equipo1: "Santiago", ida1: 9, vuelta1: 3, equipo2: "La Victoria", ida2: 3, vuelta2: 5 }
+// Datos de ejemplo
+const resultados = [
+    { local: "La Victoria", golesLocal: 3, visitante: "Las Flores", golesVisitante: 1 },
+    { local: "Villanueva", golesLocal: 2, visitante: "El Plan", golesVisitante: 2 },
+    { local: "Dos Caminos", golesLocal: 0, visitante: "Pimienta", golesVisitante: 1 }
 ];
 
 const goleadores = [
-    { nombre: "Eduar P", goles: 4 },
-    { nombre: "Marcos", goles: 3 },
-    { nombre: "Dereck", goles: 10 },
-    { nombre: "Joshua", goles: 5 },
-    { nombre: "Jhair Ortiz", goles: 5 },
-    { nombre: "David", goles: 3 },
-    { nombre: "Anubis", goles: 2 }
+    { nombre: "Carlos López", equipo: "La Victoria", goles: 4 },
+    { nombre: "Pedro Martínez", equipo: "Pimienta", goles: 3 },
+    { nombre: "Juan Torres", equipo: "Las Flores", goles: 2 }
 ];
 
-// ==========================
-// TABLA DE RESULTADOS
-// ==========================
-const tablaResultados = document.getElementById("tabla-resultados");
-let html = "<table><tr><th>Grupo</th><th>Equipo 1</th><th>Ida</th><th>Vuelta</th><th>Equipo 2</th><th>Ida</th><th>Vuelta</th></tr>";
-partidos.forEach(p => {
-    html += `<tr>
-        <td>${p.grupo}</td>
-        <td>${p.equipo1}</td>
-        <td>${p.ida1}</td>
-        <td>${p.vuelta1 ?? "-"}</td>
-        <td>${p.equipo2}</td>
-        <td>${p.ida2}</td>
-        <td>${p.vuelta2 ?? "-"}</td>
-    </tr>`;
-});
-html += "</table>";
-tablaResultados.innerHTML = html;
+const porteros = [
+    { nombre: "Luis García", equipo: "Villanueva", golesRecibidos: 1 },
+    { nombre: "Mario Pérez", equipo: "La Victoria", golesRecibidos: 2 },
+    { nombre: "José Díaz", equipo: "Pimienta", golesRecibidos: 3 }
+];
 
-// ==========================
-// GOLEADORES ORDENADOS
-// ==========================
-const listaGoleadores = document.getElementById("lista-goleadores");
-goleadores.sort((a, b) => b.goles - a.goles).forEach(g => {
-    const li = document.createElement("li");
-    li.textContent = `${g.nombre} - ${g.goles} goles`;
-    listaGoleadores.appendChild(li);
-});
+// Mostrar resultados
+function mostrarResultados() {
+    const tabla = document.querySelector("#tablaResultados tbody");
+    tabla.innerHTML = "";
 
-// ==========================
-// PORTERO MENOS BATIDO
-// ==========================
-function calcularGolesRecibidos(partidos) {
-    const recibidos = {};
+    resultados.forEach(partido => {
+        const ganador = partido.golesLocal > partido.golesVisitante
+            ? partido.local
+            : partido.golesLocal < partido.golesVisitante
+            ? partido.visitante
+            : "Empate";
 
-    partidos.forEach(p => {
-        if (!(p.equipo1 in recibidos)) recibidos[p.equipo1] = 0;
-        if (!(p.equipo2 in recibidos)) recibidos[p.equipo2] = 0;
-
-        // Ida
-        if (typeof p.ida1 === "number" && typeof p.ida2 === "number") {
-            recibidos[p.equipo1] += p.ida2;
-            recibidos[p.equipo2] += p.ida1;
-        }
-
-        // Vuelta (si cuenta)
-        if (!p.vueltaNoCuenta) {
-            if (typeof p.vuelta1 === "number" && typeof p.vuelta2 === "number") {
-                recibidos[p.equipo1] += p.vuelta2;
-                recibidos[p.equipo2] += p.vuelta1;
-            }
-        }
+        tabla.innerHTML += `
+            <tr>
+                <td>${partido.local}</td>
+                <td>${partido.golesLocal}</td>
+                <td>${partido.visitante}</td>
+                <td>${partido.golesVisitante}</td>
+                <td>${ganador}</td>
+            </tr>
+        `;
     });
-
-    return recibidos;
 }
 
-function mostrarPorteroMenosBatido(partidos) {
-    const recibidos = calcularGolesRecibidos(partidos);
-    const lista = Object.entries(recibidos).map(([equipo, goles]) => ({ equipo, goles }));
-    lista.sort((a, b) => a.goles - b.goles);
+// Mostrar goleadores
+function mostrarGoleadores() {
+    const tabla = document.querySelector("#tablaGoleadores tbody");
+    tabla.innerHTML = "";
 
-    const cont = document.createElement("section");
-    cont.id = "mejor-portero";
-    cont.innerHTML = `
-        <h2>🏆 Portero menos batido</h2>
-        <p style="font-weight:bold">${lista[0].equipo} — ${lista[0].goles} goles recibidos</p>
-        <table>
-            <tr><th>Equipo</th><th>Goles recibidos</th></tr>
-            ${lista.map(row => `
-                <tr style="${row.equipo === lista[0].equipo ? 'background:#d1fae5;font-weight:700' : ''}">
-                    <td>${row.equipo}</td>
-                    <td>${row.goles}</td>
+    goleadores
+        .sort((a, b) => b.goles - a.goles)
+        .forEach(jugador => {
+            tabla.innerHTML += `
+                <tr>
+                    <td>${jugador.nombre}</td>
+                    <td>${jugador.equipo}</td>
+                    <td>${jugador.goles}</td>
                 </tr>
-            `).join("")}
-        </table>
-    `;
-    document.querySelector("main").prepend(cont);
+            `;
+        });
 }
 
-mostrarPorteroMenosBatido(partidos);
+// Mostrar portero menos batido
+function mostrarPortero() {
+    const tabla = document.querySelector("#tablaPortero tbody");
+    tabla.innerHTML = "";
 
-// ==========================
-// BRACKET
-// ==========================
-const bracket = [
-    { ronda: "Semifinal 1", equipo1: "Ganador Grupo A", equipo2: "Ganador Grupo C" },
-    { ronda: "Semifinal 2", equipo1: "Ganador Grupo B", equipo2: "Mejor Perdedor" },
-    { ronda: "Final", equipo1: "Ganador SF1", equipo2: "Ganador SF2" },
-    { ronda: "Tercer Lugar", equipo1: "Perdedor SF1", equipo2: "Perdedor SF2" }
-];
+    porteros
+        .sort((a, b) => a.golesRecibidos - b.golesRecibidos)
+        .forEach(portero => {
+            tabla.innerHTML += `
+                <tr>
+                    <td>${portero.nombre}</td>
+                    <td>${portero.equipo}</td>
+                    <td>${portero.golesRecibidos}</td>
+                </tr>
+            `;
+        });
+}
 
-const bracketContainer = document.getElementById("bracket-container");
-bracket.forEach(b => {
-    const box = document.createElement("div");
-    box.className = "bracket-box";
-    box.innerHTML = `<strong>${b.ronda}</strong><br>${b.equipo1} <br>⚔️<br> ${b.equipo2}`;
-    bracketContainer.appendChild(box);
-});
+// Ejecutar funciones al cargar
+mostrarResultados();
+mostrarGoleadores();
+mostrarPortero();
